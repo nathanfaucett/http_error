@@ -1,4 +1,4 @@
 HttpError
-=====
+=======
 
-better http errors
+HttpError for the browser and node.js

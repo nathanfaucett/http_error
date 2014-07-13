@@ -1,4 +1,4 @@
-var STATUS_CODES = require("./status_codes");
+var STATUS_CODES = require("status_codes");
 
 
 var STATUS_NAMES = {},

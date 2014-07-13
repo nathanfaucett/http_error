@@ -1,24 +1,25 @@
 {
   "name": "http_error",
-  "version": "1.0.1",
-  "description": "better http errors",
+  "version": "0.0.1",
+  "description": "HttpError for the browser and node.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/nathanfaucett/http_error.git"
   },
-  "main": "./src/index.js",
-  "author": "Nathan Faucett",
-  "license": "BSD",
+  "main": "src/index.js",
   "keywords": [
-    "errors",
-    "errors",
-    "http",
-    "HttpError",
-    "http_error.js",
-    "http_error"
+    "http_error",
+    "http_error.js"
   ],
+  "author": "Nathan Faucett",
+  "license": "BSD-2-Clause",
   "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "",
+    "grunt-jsbeautifier": ""
+  },
   "dependencies": {
-    "node-inflect": ""
+    "status_codes": "git://github.com/nathanfaucett/status_codes"
   }
 }
+

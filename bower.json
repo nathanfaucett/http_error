@@ -1,0 +1,20 @@
+{
+  "name": "http_error",
+  "version": "0.0.1",
+  "homepage": "https://github.com/nathanfaucett/http_error",
+  "authors": [
+    "nathanfaucett <nathanfaucett@gmail.com>"
+  ],
+  "description": "HttpError for the browser and node.js",
+  "main": "src/index.js",
+  "keywords": [
+    "http_error",
+    "http_error.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}
