@@ -1,6 +1,6 @@
 {
   "name": "http_error",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "better http errors",
   "repository": {
     "type": "git",
