@@ -19,7 +19,7 @@
     "grunt-jsbeautifier": ""
   },
   "dependencies": {
-    "status_codes": "git://github.com/nathanfaucett/status_codes"
+    "status_codes": "nathanfaucett/status_codes"
   }
 }
 
