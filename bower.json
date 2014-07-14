@@ -16,5 +16,8 @@
     "**/.*",
     "node_modules",
     "bower_components"
-  ]
+  ],
+  "dependencies": {
+    "status_codes": "nathanfaucett/status_codes"
+  }
 }
