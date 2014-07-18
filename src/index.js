@@ -17,6 +17,7 @@ Object.keys(STATUS_CODES).forEach(function(code) {
 
 
 function HttpError(code, message) {
+    if (message instanceof Error) message = message.message;
     if (code instanceof Error) {
         message = code.message;
         code = 500;
@@ -33,12 +34,9 @@ function HttpError(code, message) {
     this.statusCode = code;
     this.message = this.name + ": " + code + " " + (message || STATUS_STRINGS[code]);
     Error.captureStackTrace(this, this.constructor);
-
-    return this;
 }
 HttpError.prototype = Object.create(Error.prototype);
 HttpError.prototype.constructor = HttpError;
-HttpError.prototype._super = Error.prototype;
 
 HttpError.prototype.toString = function() {
 
