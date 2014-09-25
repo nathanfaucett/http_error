@@ -19,7 +19,8 @@
     "grunt-jsbeautifier": ""
   },
   "dependencies": {
-    "status_codes": "nathanfaucett/status_codes"
+    "status_codes": "nathanfaucett/status_codes",
+    "each": "nathanfaucett/each"
   }
 }
 
