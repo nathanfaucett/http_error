@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "status_codes": "nathanfaucett/status_codes",
-    "each": "nathanfaucett/each"
+    "for_each": "nathanfaucett/for_each",
+    "create": "nathanfaucett/create"
   }
 }
 

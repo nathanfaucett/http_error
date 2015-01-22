@@ -1,4 +1,5 @@
-var each = require("each"),
+var forEach = require("for_each"),
+    create = require("create"),
     STATUS_CODES = require("status_codes");
 
 
@@ -6,7 +7,7 @@ var STATUS_NAMES = {},
     STATUS_STRINGS = {};
 
 
-each(STATUS_CODES, function(status, code) {
+forEach(STATUS_CODES, function(status, code) {
     var name;
 
     if (code < 400) return;
@@ -39,7 +40,7 @@ function HttpError(code, message) {
     this.code = code;
     this.message = this.name + ": " + code + " " + (message || STATUS_STRINGS[code]);
 }
-HttpError.prototype = Object.create(Error.prototype);
+HttpError.prototype = create(Error.prototype);
 HttpError.prototype.constructor = HttpError;
 
 HttpError.prototype.toString = function() {
