@@ -34,7 +34,10 @@ function HttpError(code, message) {
     }
 
     Error.call(this);
-    Error.captureStackTrace(this, this.constructor);
+
+    if (Error.captureStackTrace) {
+        Error.captureStackTrace(this, this.constructor);
+    }
 
     this.name = STATUS_NAMES[code] || "UnknownHttpError";
     this.code = code;
