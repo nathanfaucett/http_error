@@ -10,18 +10,25 @@ var STATUS_NAMES = {},
 forEach(STATUS_CODES, function(status, code) {
     var name;
 
-    if (code < 400) return;
+    if (code < 400) {
+        return;
+    }
 
     name = status.replace(/\s+/g, "");
 
-    if (!(/\w+Error$/.test(name))) name += "Error";
+    if (!(/\w+Error$/.test(name))) {
+        name += "Error";
+    }
+
     STATUS_NAMES[code] = name;
     STATUS_STRINGS[code] = status;
 });
 
 
 function HttpError(code, message) {
-    if (message instanceof Error) message = message.message;
+    if (message instanceof Error) {
+        message = message.message;
+    }
 
     if (code instanceof Error) {
         message = code.message;
@@ -30,7 +37,7 @@ function HttpError(code, message) {
         message = code;
         code = 500;
     } else {
-        code || (code = 500);
+        code = code || 500;
     }
 
     Error.call(this);
@@ -52,7 +59,7 @@ HttpError.prototype.toString = function() {
 };
 
 HttpError.prototype.toJSON = function(json) {
-    json || (json = {});
+    json = json || {};
 
     json.name = this.name;
     json.code = this.code;
