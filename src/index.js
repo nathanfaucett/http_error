@@ -1,16 +1,20 @@
-var forEach = require("for_each"),
-    create = require("create"),
+var objectForEach = require("object-for_each"),
+    inherits = require("inherits"),
     STATUS_CODES = require("status_codes");
 
 
 var STATUS_NAMES = {},
-    STATUS_STRINGS = {};
+    STATUS_STRINGS = {},
+    HttpErrorPrototype;
 
 
-forEach(STATUS_CODES, function(status, code) {
+module.exports = HttpError;
+
+
+objectForEach(STATUS_CODES, function eachStatus(status, statusCode) {
     var name;
 
-    if (code < 400) {
+    if (statusCode < 400) {
         return;
     }
 
@@ -20,62 +24,58 @@ forEach(STATUS_CODES, function(status, code) {
         name += "Error";
     }
 
-    STATUS_NAMES[code] = name;
-    STATUS_STRINGS[code] = status;
+    STATUS_NAMES[statusCode] = name;
+    STATUS_STRINGS[statusCode] = status;
 });
 
 
-function HttpError(code, message) {
+function HttpError(statusCode, message, fileName, lineNumber) {
     if (message instanceof Error) {
         message = message.message;
     }
 
-    if (code instanceof Error) {
-        message = code.message;
-        code = 500;
-    } else if (typeof(code) === "string") {
-        message = code;
-        code = 500;
+    if (statusCode instanceof Error) {
+        message = statusCode.message;
+        statusCode = 500;
+    } else if (typeof(statusCode) === "string") {
+        message = statusCode;
+        statusCode = 500;
     } else {
-        code = code || 500;
+        statusCode = statusCode || 500;
     }
 
-    Error.call(this);
+    Error.call(this, message, fileName, lineNumber);
 
     if (Error.captureStackTrace) {
         Error.captureStackTrace(this, this.constructor);
     }
 
-    this.name = STATUS_NAMES[code] || "UnknownHttpError";
-    this.code = code;
-    this.message = this.name + ": " + code + " " + (message || STATUS_STRINGS[code]);
+    this.name = STATUS_NAMES[statusCode] || "UnknownHttpError";
+    this.statusCode = statusCode;
+    this.message = this.name + ": " + statusCode + " " + (message || STATUS_STRINGS[statusCode]);
 }
-HttpError.prototype = create(Error.prototype);
-HttpError.prototype.constructor = HttpError;
+inherits(HttpError, Error);
+HttpErrorPrototype = HttpError.prototype;
 
-HttpError.prototype.toString = function() {
-
+HttpErrorPrototype.toString = function() {
     return this.message;
 };
 
-HttpError.prototype.toJSON = function(json) {
+HttpErrorPrototype.toJSON = function(json) {
     json = json || {};
 
     json.name = this.name;
-    json.code = this.code;
+    json.statusCode = this.statusCode;
     json.message = this.message;
 
     return json;
 };
 
-HttpError.prototype.fromJSON = function(json) {
+HttpErrorPrototype.fromJSON = function(json) {
 
     this.name = json.name;
-    this.code = json.code;
+    this.statusCode = json.statusCode;
     this.message = json.message;
 
     return this;
 };
-
-
-module.exports = HttpError;
