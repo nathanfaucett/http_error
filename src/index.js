@@ -1,6 +1,6 @@
-var objectForEach = require("object-for_each"),
-    inherits = require("inherits"),
-    STATUS_CODES = require("status_codes");
+var objectForEach = require("@nathanfaucett/object-for_each"),
+    inherits = require("@nathanfaucett/inherits"),
+    STATUS_CODES = require("@nathanfaucett/status_codes");
 
 
 var STATUS_NAMES = {},
