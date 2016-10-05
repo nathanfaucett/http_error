@@ -1,6 +1,6 @@
 {
   "name": "@nathanfaucett/http_error",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "HttpError for the browser and node.js",
   "repository": {
     "type": "git",
@@ -29,9 +29,8 @@
     "zuul": "^3.3.0"
   },
   "dependencies": {
-    "@nathanfaucett/status_codes": "^0.0.1",
-    "@nathanfaucett/object-for_each": "^0.0.1",
-    "@nathanfaucett/inherits": "^0.0.1"
+    "@nathanfaucett/status_codes": "^0.0.2",
+    "@nathanfaucett/object-for_each": "^0.0.2",
+    "@nathanfaucett/inherits": "^0.0.3"
   }
 }
-
